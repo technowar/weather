@@ -1,0 +1,12 @@
+body {
+  margin: 0 auto;
+}
+
+a {
+  color: #FFFFFF;
+}
+
+a:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+}
