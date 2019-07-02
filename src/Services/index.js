@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
 export default Axios.create({
-  baseURL: 'https://api.openweathermap.org/data/2.5/weather',
+  baseURL: 'https://api.openweathermap.org/data/2.5',
   responseType: 'json',
 })

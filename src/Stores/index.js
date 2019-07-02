@@ -1,3 +1,9 @@
 import {writable} from 'svelte/store';
 
-export const City = writable('');
+const City = writable('');
+const ErrorObject = writable({});
+
+export {
+  City,
+  ErrorObject,
+}

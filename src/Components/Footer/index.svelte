@@ -19,7 +19,6 @@
 <footer>
 	<nav>
 		<ul>
-			<li>WEATHER</li>
 			<li><a href="#about">ABOUT</a></li>
 			<li><a href="#contact">CONTACT</a></li>
 			<li><a href="#terms">TERMS</a></li>
