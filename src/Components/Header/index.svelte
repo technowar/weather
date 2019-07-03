@@ -31,19 +31,20 @@
 			<a href="#!">WEATHER</a>
 		</div>
 		<div class="search">
-			<input type="text" placeholder="Search City" bind:value={$City} on:keyup={handleKeyup}/>
+			<input type="text" placeholder="Search City" bind:value={city} on:keyup={handleKeyup}/>
 		</div>
 	</nav>
 </header>
 
 <script>
 	import {SearchCity} from '../../Actions';
-	import {City} from '../../Stores';
+
+	let city = '';
 
 	function handleKeyup (evt) {
 		if (evt.keyCode === 13) {
 			SearchCity({
-				city: $City
+				city,
 			});
 		}
 	}

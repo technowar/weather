@@ -1,7 +1,7 @@
 <style>
 	section {
-		background-color: #CFD8DC;
-		height: 300px;
+		background-color: #607D8B;
+		height: 320px;
 		padding: 0 20px;
 	}
 
@@ -10,6 +10,16 @@
 		display: table;
 		height: 100%;
 		width: 100%;
+	}
+
+	.city {
+		padding-bottom: 3px;
+		text-align: center;
+	}
+
+	.city span {
+		font-size: 8pt;
+		font-weight: 400;
 	}
 
 	.empty {
@@ -24,13 +34,17 @@
 	}
 
 	.empty span {
-		color: #757575;
+		font-size: 8pt;
+		font-weight: 400;
 	}
 </style>
 
 <section>
 	<div class="container">
 		{#if Object.keys($DataObject).length}
+			<div class="city">
+				<span>5-DAY WEATHER FORECAST FOR {$City.toUpperCase()}</span>
+			</div>
 			<div class="content">
 				{#each $DataObject.list as value (value.dt)}
 					<Card value={value}/>
@@ -39,13 +53,13 @@
 		{:else}
 			<div class="empty">
 				<img src="http://openweathermap.org/img/wn/02d@2x.png" alt="few_clouds">
-				<span>Search for your city to begin</span>
+				<span>SEARCH YOUR CITY TO BEGIN</span>
 			</div>
 		{/if}
 	</div>
 </section>
 
 <script>
-	import {DataObject} from '../../Stores';
+	import {City, DataObject} from '../../Stores';
 	import Card from '../Card/index.svelte';
 </script>

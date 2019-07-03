@@ -9,9 +9,9 @@
 	}
 
 	.card:first-child {
-		-webkit-box-shadow: 10px 10px 5px 0px rgba(158,158,158,0.20);
-		-moz-box-shadow: 10px 10px 5px 0px rgba(158,158,158,0.20);
-		box-shadow: 10px 10px 5px 0px rgba(158,158,158,0.20);
+		-webkit-box-shadow: 10px 10px 5px 0px rgba(158,158,158,0.30);
+		-moz-box-shadow: 10px 10px 5px 0px rgba(158,158,158,0.30);
+		box-shadow: 10px 10px 5px 0px rgba(158,158,158,0.30);
 	}
 
 	.card:last-child {
@@ -87,11 +87,11 @@
 		<div class="hilo">
 			<div>
 				<span>HI</span>
-				<span>{info.main.temp_min}&deg;</span>
+				<span>{info.main.temp_max}&deg;</span>
 			</div>
 			<div>
 				<span>LO</span>
-				<span>{info.main.temp_max}&deg;</span>
+				<span>{info.main.temp_min}&deg;</span>
 			</div>
 		</div>
 	</div>
@@ -114,7 +114,7 @@
 <script>
 	export let value;
 
-	let info = {
+	$: info = {
 		clouds: value.clouds['all'],
 		dt: {
 			date: new Date(value['dt']*1000).toLocaleDateString('en-US', {

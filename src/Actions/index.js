@@ -1,5 +1,5 @@
 import Services from '../Services';
-import {DataObject, ErrorObject} from '../Stores';
+import {City, DataObject, ErrorObject} from '../Stores';
 
 export const SearchCity = async (payload) => {
   try {
@@ -23,6 +23,7 @@ export const SearchCity = async (payload) => {
       hour += 1;
     } while (hour%3);
 
+    City.update(() => payload.city);
     DataObject.update(() => ({
       sys: {
         sunset,
