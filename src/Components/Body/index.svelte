@@ -12,12 +12,12 @@
 		width: 100%;
 	}
 
-	.city {
+	.location {
 		padding-bottom: 3px;
 		text-align: center;
 	}
 
-	.city span {
+	.location span {
 		font-size: 8pt;
 		font-weight: 400;
 	}
@@ -42,8 +42,8 @@
 <section>
 	<div class="container">
 		{#if Object.keys($DataObject).length}
-			<div class="city">
-				<span>5-DAY WEATHER FORECAST FOR {$City.toUpperCase()}</span>
+			<div class="location">
+				<span>5-DAY WEATHER AND FORECAST FOR {`${$DataObject.name.toUpperCase()}, ${$DataObject.sys.country.toUpperCase()}`}</span>
 			</div>
 			<div class="content">
 				{#each $DataObject.list as value (value.dt)}
@@ -60,6 +60,6 @@
 </section>
 
 <script>
-	import {City, DataObject} from '../../Stores';
+	import {DataObject} from '../../Stores';
 	import Card from '../Card/index.svelte';
 </script>

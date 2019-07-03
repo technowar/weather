@@ -1,5 +1,5 @@
 import Services from '../Services';
-import {City, DataObject, ErrorObject} from '../Stores';
+import {DataObject, ErrorObject} from '../Stores';
 
 export const SearchCity = async (payload) => {
   try {
@@ -10,7 +10,9 @@ export const SearchCity = async (payload) => {
     } = await Services.get(`forecast/?q=${payload.city}&units=metric&appid=d2785f6b76897eb3d876cb3a97d5e707`);
     const {
       data: {
+        name,
         sys: {
+          country,
           sunrise,
           sunset,
         }
@@ -23,9 +25,19 @@ export const SearchCity = async (payload) => {
       hour += 1;
     } while (hour%3);
 
-    City.update(() => payload.city);
+    const time = new Date().getTime()/1000|0;
+    const stylesheet = document.querySelector('#stylesheet');
+    const option = {
+      true: () => stylesheet.href.replace(/dark|light/gi, 'dark'),
+      false: () => stylesheet.href.replace(/dark|light/gi, 'light'),
+    };
+
+    stylesheet.href = option[time > sunset]();
+
     DataObject.update(() => ({
+      name,
       sys: {
+        country,
         sunset,
         sunrise,
       },
