@@ -18,24 +18,21 @@
 
 <section>
 	<div class="container">
-		<div class="content">
-			<span>1</span>
-		</div>
-		<div class="content">
-			<span>2</span>
-		</div>
-		<div class="content">
-			<span>3</span>
-		</div>
-		<div class="content">
-			<span>4</span>
-		</div>
-		<div class="content">
-			<span>5</span>
-		</div>
+		{#if Object.keys($DataObject).length}
+			{#each Object.entries($DataObject.list) as [key, value]}
+				<div class="content">
+					<Card
+						dt={value.dt}
+						main={value.main}
+						weather={value.weather[0]}
+					/>
+				</div>
+			{/each}
+		{/if}
 	</div>
 </section>
 
 <script>
 	import {DataObject} from '../../Stores';
+	import Card from '../Card/index.svelte';
 </script>
