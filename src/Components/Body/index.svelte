@@ -5,16 +5,11 @@
 		padding: 0 20px;
 	}
 
-	.container {
+	.container,
+	.content {
 		display: table;
 		height: 100%;
 		width: 100%;
-	}
-
-	.content {
-		display: inherit;
-		height: 100%;
-		width: inherit;
 	}
 
 	.empty {
@@ -23,12 +18,12 @@
 		vertical-align: middle;
 	}
 
-	img {
+	.empty img {
 		vertical-align: middle;
 		width: 50px;
 	}
 
-	span {
+	.empty span {
 		color: #757575;
 	}
 </style>
@@ -37,7 +32,7 @@
 	<div class="container">
 		{#if Object.keys($DataObject).length}
 			<div class="content">
-				{#each Object.entries($DataObject.list) as [key, value]}
+				{#each $DataObject.list as value (value.dt)}
 					<Card value={value}/>
 				{/each}
 			</div>
