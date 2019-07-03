@@ -12,12 +12,14 @@
 	}
 
 	.content {
-		display: table-cell;
-		max-width: 0;
-		text-align: center;
+		display: inherit;
+		height: 100%;
+		width: inherit;
 	}
 
 	.empty {
+		display: table-cell;
+		text-align: center;
 		vertical-align: middle;
 	}
 
@@ -34,13 +36,13 @@
 <section>
 	<div class="container">
 		{#if Object.keys($DataObject).length}
-			{#each Object.entries($DataObject.list) as [key, value]}
-				<div class="content">
+			<div class="content">
+				{#each Object.entries($DataObject.list) as [key, value]}
 					<Card value={value}/>
-				</div>
-			{/each}
+				{/each}
+			</div>
 		{:else}
-			<div class="empty content">
+			<div class="empty">
 				<img src="http://openweathermap.org/img/wn/02d@2x.png" alt="few_clouds">
 				<span>Search for your city to begin</span>
 			</div>
