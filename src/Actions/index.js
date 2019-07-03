@@ -1,9 +1,13 @@
 import Services from '../Services';
-import {ErrorObject} from '../Stores';
+import {DataObject, ErrorObject} from '../Stores';
 
 export const SearchCity = async (payload) => {
   try {
-    const forecast = await Services.get(`forecast/?q=${payload.city}&appid=d2785f6b76897eb3d876cb3a97d5e707`);
+    const {
+      data: {
+        list,
+      }
+    } = await Services.get(`forecast/?q=${payload.city}&units=metric&appid=d2785f6b76897eb3d876cb3a97d5e707`);
     const {
       data: {
         sys: {
@@ -11,9 +15,21 @@ export const SearchCity = async (payload) => {
           sunset,
         }
       }
-    } = await Services.get(`weather/?q=${payload.city}&appid=d2785f6b76897eb3d876cb3a97d5e707`);
+    } = await Services.get(`weather/?q=${payload.city}&units=metric&appid=d2785f6b76897eb3d876cb3a97d5e707`);
 
-    console.log(forecast);
+    let hour = new Date().getHours();
+
+    do {
+      hour += 1;
+    } while (hour%3);
+
+    DataObject.update(() => ({
+      sys: {
+        sunset,
+        sunrise,
+      },
+      list: list.filter(list => parseInt(list.dt_txt.split(' ')[1].split(':')[0]) === hour),
+    }));
   } catch (error) {
     ErrorObject.update(() => error.response);
   }
