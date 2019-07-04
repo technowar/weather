@@ -7,7 +7,7 @@ export const SearchCity = async (payload) => {
       data: {
         list,
       }
-    } = await Services.get(`forecast/?q=${payload.city}&units=metric&appid=d2785f6b76897eb3d876cb3a97d5e707`);
+    } = await Services.get(`forecast/?q=${payload.city}&units=metric&appid=${API_KEY}`);
     const {
       data: {
         name,
@@ -17,7 +17,7 @@ export const SearchCity = async (payload) => {
           sunset,
         }
       }
-    } = await Services.get(`weather/?q=${payload.city}&units=metric&appid=d2785f6b76897eb3d876cb3a97d5e707`);
+    } = await Services.get(`weather/?q=${payload.city}&units=metric&appid=${API_KEY}`);
 
     let hour = new Date().getHours();
 
