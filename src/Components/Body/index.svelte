@@ -50,6 +50,11 @@
 					<Card value={value}/>
 				{/each}
 			</div>
+		{:else if Object.keys($ErrorObject).length}
+			<div class="empty">
+				<img src="http://openweathermap.org/img/wn/50d@2x.png" alt="mist">
+				<span>NO DATA FOUND ON YOUR CITY</span>
+			</div>
 		{:else}
 			<div class="empty">
 				<img src="http://openweathermap.org/img/wn/02d@2x.png" alt="few_clouds">
@@ -60,6 +65,6 @@
 </section>
 
 <script>
-	import {DataObject} from '../../Stores';
+	import {DataObject, ErrorObject} from '../../Stores';
 	import Card from '../Card/index.svelte';
 </script>

@@ -43,7 +43,9 @@ export const SearchCity = async (payload) => {
       },
       list: list.filter(list => parseInt(list.dt_txt.split(' ')[1].split(':')[0]) === hour),
     }));
+    ErrorObject.set({});
   } catch (error) {
+    DataObject.set({});
     ErrorObject.update(() => error.response);
   }
 }
