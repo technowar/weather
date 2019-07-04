@@ -77,7 +77,7 @@
 		<span>{info.dt.time}</span>
 	</div>
 	<div class="icon">
-		<img src="http://openweathermap.org/img/wn/{info.weather.icon}@2x.png" alt="{info.weather.description}">
+		<img src="https://openweathermap.org/img/wn/{info.weather.icon}@2x.png" alt="{info.weather.description}">
 		<span>{info.weather.description}</span>
 	</div>
 	<div class="temperature">
